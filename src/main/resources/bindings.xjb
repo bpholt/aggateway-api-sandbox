@@ -14,10 +14,10 @@
         <serializable uid="1" />
     </globalBindings>
     <!-- see http://confluence.highsource.org/display/J2B/Annotate+Plugin#AnnotatePlugin-Definingannotationsinexternalbindingfiles -->
-    <bindings schemaLocation="test.xsd" node="/xs:schema">
+    <bindings schemaLocation="aggateway-spade.xsd" node="/xs:schema">
         <bindings node="/xs:schema/xs:element[@name='links']/xs:complexType/xs:sequence/xs:element[@name='link']">
             <annox:annotate>
-                <annox:annotate annox:class="org.codehaus.jackson.annotate.JsonValue" value="true" />
+                <annox:annotate annox:class="org.codehaus.jackson.annotate.JsonProperty" value="links" />
             </annox:annotate>
         </bindings>
     </bindings>

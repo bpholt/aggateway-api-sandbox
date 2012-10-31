@@ -3,7 +3,7 @@ Sample code to serialize the XSD in src/main/resources using JAXB and Jackson.
 JSON Output:
 
     {
-      "link" : [ {
+      "links" : [ {
         "value" : "AgGateway Home Page",
         "rel" : "aggateway-home",
         "href" : "http://www.aggateway.org"

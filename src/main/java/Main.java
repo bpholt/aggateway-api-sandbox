@@ -14,12 +14,16 @@ import java.io.StringWriter;
 public class Main {
 
     private static final ObjectFactory objectFactory = new ObjectFactory();
+    private static final ObjectMapper mapper = new ObjectMapper();
 
     public static void main(final String... args) throws Exception {
         final Links links = buildLinks();
 
         final String json = writeJson(links);
         System.out.println(json);
+
+        final Links deserializedLinks = mapper.readValue(json, Links.class);
+        System.out.println(deserializedLinks.getLink().size());
 
         final String xml = writeXml(links);
         System.out.println(xml);
@@ -34,7 +38,6 @@ public class Main {
     }
 
     private static String writeJson(final Links links) throws IOException {
-        final ObjectMapper mapper = new ObjectMapper();
         mapper.getSerializationConfig().withAnnotationIntrospector(new JaxbAnnotationIntrospector());
         final StringWriter jsonWriter = new StringWriter();
         final JsonGenerator gen = mapper.getJsonFactory().createJsonGenerator(jsonWriter);
