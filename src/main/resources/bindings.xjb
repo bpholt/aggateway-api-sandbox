@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bindings
+        version="1.0"
+        xmlns="http://java.sun.com/xml/ns/jaxb"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:annox="http://annox.dev.java.net"
+        extensionBindingPrefixes="annox"
+        >
+    <globalBindings>
+        <javaType name="java.util.Calendar" xmlType="xs:dateTime"
+                  parseMethod="javax.xml.bind.DatatypeConverter.parseDateTime"
+                  printMethod="javax.xml.bind.DatatypeConverter.printDateTime"
+                />
+        <serializable uid="1" />
+    </globalBindings>
+    <!-- see http://confluence.highsource.org/display/J2B/Annotate+Plugin#AnnotatePlugin-Definingannotationsinexternalbindingfiles -->
+    <bindings schemaLocation="test.xsd" node="/xs:schema">
+        <bindings node="/xs:schema/xs:element[@name='links']/xs:complexType/xs:sequence/xs:element[@name='link']">
+            <annox:annotate>
+                <annox:annotate annox:class="org.codehaus.jackson.annotate.JsonValue" value="true" />
+            </annox:annotate>
+        </bindings>
+    </bindings>
+</bindings>

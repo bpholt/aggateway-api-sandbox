@@ -18,11 +18,11 @@ public class Main {
     public static void main(final String... args) throws Exception {
         final Links links = buildLinks();
 
-        final String jsonWriter = writeJson(links);
-        System.out.println(jsonWriter);
+        final String json = writeJson(links);
+        System.out.println(json);
 
-        final String writer = writeXml(links);
-        System.out.println(writer);
+        final String xml = writeXml(links);
+        System.out.println(xml);
     }
 
     private static String writeXml(final Links links) throws JAXBException {
@@ -35,7 +35,7 @@ public class Main {
 
     private static String writeJson(final Links links) throws IOException {
         final ObjectMapper mapper = new ObjectMapper();
-        mapper.getSerializationConfig().setAnnotationIntrospector(new JaxbAnnotationIntrospector());
+        mapper.getSerializationConfig().withAnnotationIntrospector(new JaxbAnnotationIntrospector());
         final StringWriter jsonWriter = new StringWriter();
         final JsonGenerator gen = mapper.getJsonFactory().createJsonGenerator(jsonWriter);
         gen.useDefaultPrettyPrinter();
